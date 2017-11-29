@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>acme</groupId>
+        <artifactId>multiplatform-distribution-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>multiplatform-distribution-client</artifactId>
+    <packaging>jar</packaging>
+    <name>acme:multiplatform-distribution-client</name>
+
+    <build>
+        <finalName>${app.finalName}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${dependency.plugin.version}</version>
+                <executions>
+                    <!-- Class path in manifest format -->
+                    <execution>
+                        <id>build-manifest-classpath</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>build-classpath</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <fileSeparator>/</fileSeparator>
+                            <outputProperty>manifest.dependency.classpath</outputProperty>
+                            <prefix>lib</prefix>
+                            <pathSeparator>;</pathSeparator>
+                        </configuration>
+                    </execution>
+                    <!-- Copy dependencies files -->
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <id>regex-property</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>manifest.dependency.replaced.classpath</name>
+                            <value>${manifest.dependency.classpath}</value>
+                            <regex>;</regex>
+                            <replacement xml:space="preserve"> </replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${jar.plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <mainClass>${app.mainClass}</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Built-By>${project.organization.name}</Built-By>
+                            <Class-Path>${manifest.dependency.replaced.classpath}</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${resources.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <!-- Copying license -->
+                        <id>copy-license</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/../multiplatform-distribution-distrib</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>license.txt</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>windows-application-name</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <javafx.deploy.applicationName>${app.finalName}</javafx.deploy.applicationName>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix-application-name</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <javafx.deploy.applicationName>${app.finalName}</javafx.deploy.applicationName>
+            </properties>
+        </profile>
+        <profile>
+            <id>macos-application-name</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <javafx.deploy.applicationName>${app.shortName}</javafx.deploy.applicationName>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>native-deploy</id>
+            <properties>
+                <javafx.deploy.outputDirectory>${project.build.directory}/deploy</javafx.deploy.outputDirectory>
+                <javafx.deploy.jarOutputDirectory>${javafx.deploy.outputDirectory}/app</javafx.deploy.jarOutputDirectory>
+                <javafx.deploy.deployOutputDirectory>${javafx.deploy.outputDirectory}/native</javafx.deploy.deployOutputDirectory>
+                <javafx.deploy.deployOutputFile>${app.finalName}</javafx.deploy.deployOutputFile>
+                <javafx.deploy.dependencySubDirectory>lib</javafx.deploy.dependencySubDirectory>
+                <javafx.deploy.mainClass>${app.mainClass}</javafx.deploy.mainClass>
+            </properties>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>${antrun.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <configuration>
+                                    <target>
+                                        <taskdef name="jfxdeploy" classname="com.sun.javafx.tools.ant.DeployFXTask"
+                                                 classpathref="maven.plugin.classpath"/>
+                                        <copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${javafx.deploy.jarOutputDirectory}"/>
+                                        <copy todir="${javafx.deploy.jarOutputDirectory}/${javafx.deploy.dependencySubDirectory}">
+                                            <fileset dir="${project.build.directory}/lib" includes="**"/>
+                                        </copy>
+                                        <jfxdeploy outdir="${javafx.deploy.deployOutputDirectory}"
+                                                   outfile="${javafx.deploy.deployOutputFile}"
+                                                   nativeBundles="all" verbose="true">
+                                            <application name="${javafx.deploy.applicationName}"
+                                                         mainClass="${javafx.deploy.mainClass}"
+                                                         version="${project.version}"
+                                                         id="${project.artifactId}"/>
+                                            <resources>
+                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="*.jar"/>
+                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="${javafx.deploy.dependencySubDirectory}/*.jar"/>
+                                                <fileset dir="${basedir}/target" includes="license.txt"/>
+                                                <fileset dir="${basedir}/../multiplatform-distribution-distrib" includes="readme.txt"/>
+                                            </resources>
+                                            <bundleArgument arg="dropinResourcesRoot" value="${basedir}/../multiplatform-distribution-resources/target/classes"/>
+                                        </jfxdeploy>
+                                        <delete file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}/${javafx.deploy.applicationName}.ico"/>
+                                        <move file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}-${project.version}.dmg"
+                                              tofile="${javafx.deploy.deployOutputDirectory}/${app.finalName}-${project.version}.dmg"
+                                              failonerror="false"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.oracle</groupId>
+                                <artifactId>ant-javafx</artifactId>
+                                <version>${project.build.javaVersion}</version>
+                                <systemPath>${java.home}/lib/ant-javafx.jar</systemPath>
+                                <scope>system</scope>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>tar-gz</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>${assembly.plugin.version}</version>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>${app.finalName}-${project.version}</finalName>
+                            <descriptors>
+                                <descriptor>assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>make-assembly</id>
+                                <!-- This is used for inheritance merges -->
+                                <phase>package</phase>
+                                <!-- Append to the packaging phase. -->
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

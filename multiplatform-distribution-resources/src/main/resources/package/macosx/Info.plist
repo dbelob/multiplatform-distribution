@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>LSMinimumSystemVersion</key>
+        <string>10.7.4</string>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleAllowMixedLocalizations</key>
+        <true/>
+        <key>CFBundleExecutable</key>
+        <string>${plist.bundleExecutable}</string>
+        <key>CFBundleIconFile</key>
+        <string>${plist.bundleIconFile}</string>
+        <key>CFBundleIdentifier</key>
+        <string>${plist.bundleIdentifier}</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundleName</key>
+        <string>${plist.bundleName}</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleShortVersionString</key>
+        <string>${plist.bundleShortVersion}</string>
+        <key>CFBundleSignature</key>
+        <string>????</string>
+        <key>LSApplicationCategoryType</key>
+        <string>Unknown</string>
+        <key>CFBundleVersion</key>
+        <string>${plist.bundleVersion}</string>
+        <key>NSHumanReadableCopyright</key>
+        <string>${plist.copyright}</string>
+        <key>JVMRuntime</key>
+        <string>$APPDIR/PlugIns/Java.runtime</string>
+        <key>JVMMainClassName</key>
+        <string>${plist.mainClassName}</string>
+        <key>JVMAppClasspath</key>
+        <string>
+        </string>
+        <key>JVMMainJarName</key>
+        <string>${plist.jvmMainJarName}</string>
+        <key>JVMPreferencesID</key>
+        <string>${plist.jvmPreferencesId}</string>
+        <key>JVMOptions</key>
+        <array>
+
+        </array>
+        <key>JVMUserOptions</key>
+        <dict>
+
+        </dict>
+        <key>ArgOptions</key>
+        <array>
+
+        </array>
+        <key>NSHighResolutionCapable</key>
+        <string>true</string>
+    </dict>
+</plist>

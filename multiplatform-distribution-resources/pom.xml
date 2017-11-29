@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>acme</groupId>
+        <artifactId>multiplatform-distribution-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>multiplatform-distribution-resources</artifactId>
+    <packaging>jar</packaging>
+    <name>acme:multiplatform-distribution-resources</name>
+
+    <properties>
+        <innosetup.appName>${app.fullName}</innosetup.appName>
+        <innosetup.appCopyrightYears>${app.copyrightYears}</innosetup.appCopyrightYears>
+        <innosetup.appId>${innosetup.appName}</innosetup.appId>
+        <innosetup.appVersion>${project.version}</innosetup.appVersion>
+        <innosetup.appVerName>${innosetup.appName} ${innosetup.appVersion}</innosetup.appVerName>
+        <innosetup.appPublisher>${project.organization.name}</innosetup.appPublisher>
+        <innosetup.appCopyright>Copyright (c) ${innosetup.appCopyrightYears} ${innosetup.appPublisher}</innosetup.appCopyright>
+        <innosetup.appPublisherURL>${project.organization.url}</innosetup.appPublisherURL>
+        <innosetup.defaultDirName>{pf}\${innosetup.appPublisher}\${innosetup.appName}</innosetup.defaultDirName>
+        <innosetup.defaultGroupName>${innosetup.appName}</innosetup.defaultGroupName>
+        <innosetup.outputBaseFilename>${app.finalName}-${project.version}</innosetup.outputBaseFilename>
+        <innosetup.uninstallDisplayName>${innosetup.appName}</innosetup.uninstallDisplayName>
+        <innosetup.wizardImageFile>${project.basedir}/src/main/resources/package/windows/${app.finalName}-wizard-image.bmp</innosetup.wizardImageFile>
+        <innosetup.wizardSmallImageFile>${app.finalName}-setup-icon.bmp</innosetup.wizardSmallImageFile>
+        <innosetup.applicationDirectory>${app.finalName}</innosetup.applicationDirectory>
+        <innosetup.applicationExe>${app.finalName}.exe</innosetup.applicationExe>
+        <innosetup.applicationIco>${app.finalName}.ico</innosetup.applicationIco>
+
+        <plist.bundleExecutable>${app.shortName}</plist.bundleExecutable>
+        <plist.bundleIconFile>${app.shortName}.icns</plist.bundleIconFile>
+        <plist.bundleIdentifier>${app.identifier}</plist.bundleIdentifier>
+        <plist.bundleName>${app.fullName}</plist.bundleName>
+        <plist.bundleShortVersion>${project.version}</plist.bundleShortVersion>
+        <plist.bundleVersion>${project.version}</plist.bundleVersion>
+        <plist.copyright>Copyright (c) ${app.copyrightYears} ${project.organization.name}</plist.copyright>
+        <plist.mainClassName>${app.mainClass}</plist.mainClassName>
+        <plist.jvmMainJarName>${app.finalName}-${project.version}.jar</plist.jvmMainJarName>
+        <plist.jvmPreferencesId>${app.identifier}</plist.jvmPreferencesId>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.iss</include>
+                    <include>**/*.plist</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.iss</exclude>
+                    <exclude>**/*.plist</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+</project>
