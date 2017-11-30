@@ -9,7 +9,7 @@
 *.df            text
 *.htm           text
 *.html          text
-*.iss           text linguist-vendored=false
+*.iss           text linguist-vendored
 *.java          text
 *.js            text
 *.json          text
