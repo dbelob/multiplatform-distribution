@@ -1,10 +1,10 @@
 # Multi platform distribution for Java application
 
-The example demonstrates how to create multi platform distributions for applications in *Java 9*.
+The example demonstrates how to create multi platform distributions for applications in *Java 10*.
 
 ## Requirements
 
-* [JDK 9](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [JDK 10 Early-Access 36+](http://jdk.java.net/10/)
 * [Apache Maven 3.5.0+](https://maven.apache.org/download.cgi)
 * [Inno Setup 5.5.9+](http://www.jrsoftware.org/isinfo.php)
 
