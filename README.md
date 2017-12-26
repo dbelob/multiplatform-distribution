@@ -4,7 +4,7 @@ The example demonstrates how to create multi platform distributions for applicat
 
 ## Requirements
 
-* [JDK 10 Early-Access 36+](http://jdk.java.net/10/)
+* [JDK 10 Early-Access Build 36+](http://jdk.java.net/10/)
 * [Apache Maven 3.5.0+](https://maven.apache.org/download.cgi)
 * [Inno Setup 5.5.9+](http://www.jrsoftware.org/isinfo.php)
 
@@ -25,3 +25,7 @@ For *Linux*:
 `multiplatform-distribution-client/target/deploy/native/multiplatform-distribution-<version>.dmg` (*macOS*)
 
 `multiplatform-distribution-client/target/multiplatform-distribution-<version>.tar.gz` (*Linux*)
+
+## Article
+
+See [Habrahabr](https://habrahabr.ru/company/jugru/blog/340248/) (Russian)
