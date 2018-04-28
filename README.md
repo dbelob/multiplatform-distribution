@@ -4,7 +4,7 @@ The example demonstrates how to create multi platform distributions for applicat
 
 ## Requirements
 
-* [JDK 10 Early-Access Build 36+](http://jdk.java.net/10/)
+* [JDK 10+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Apache Maven 3.5.0+](https://maven.apache.org/download.cgi)
 * [Inno Setup 5.5.9+](http://www.jrsoftware.org/isinfo.php)
 
