@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${dependency.plugin.version}</version>
+                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <!-- Class path in manifest format -->
                     <execution>
@@ -75,7 +75,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${jar.plugin.version}</version>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
@@ -92,7 +92,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${resources.plugin.version}</version>
+                <version>${maven-resources-plugin.version}</version>
                 <executions>
                     <execution>
                         <!-- Copying license -->
@@ -244,7 +244,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-assembly-plugin</artifactId>
-                        <version>${assembly.plugin.version}</version>
+                        <version>${maven-assembly-plugin.version}</version>
                         <configuration>
                             <appendAssemblyId>false</appendAssemblyId>
                             <finalName>${app.finalName}-${project.version}</finalName>

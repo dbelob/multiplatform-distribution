@@ -15,25 +15,25 @@
     <properties>
         <app.fullName>Multiplatform Distribution</app.fullName>
         <app.shortName>Multiplatform Distrib</app.shortName>
-        <app.copyrightYears>2017</app.copyrightYears>
+        <app.copyrightYears>2024</app.copyrightYears>
         <app.finalName>multiplatform-distribution</app.finalName>
         <app.defaultPackage>acme.distribution</app.defaultPackage>
         <app.mainClass>${app.defaultPackage}.App</app.mainClass>
         <app.identifier>${app.defaultPackage}</app.identifier>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.javaVersion>9</project.build.javaVersion>
+        <project.build.javaVersion>21</project.build.javaVersion>
 
-        <compiler.plugin.version>3.7.0</compiler.plugin.version>
-        <jar.plugin.version>3.0.2</jar.plugin.version>
-        <dependency.plugin.version>3.0.1</dependency.plugin.version>
-        <assembly.plugin.version>3.1.0</assembly.plugin.version>
-        <resources.plugin.version>3.0.2</resources.plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
+        <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <antrun.plugin.version>1.8</antrun.plugin.version>
 
         <!-- Logging -->
-        <logback.version>1.2.3</logback.version>
-        <sl4j.version>1.7.25</sl4j.version>
+        <logback.version>1.5.3</logback.version>
+        <sl4j.version>2.0.12</sl4j.version>
     </properties>
 
     <modules>
@@ -47,7 +47,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${project.build.javaVersion}</source>
                     <target>${project.build.javaVersion}</target>
