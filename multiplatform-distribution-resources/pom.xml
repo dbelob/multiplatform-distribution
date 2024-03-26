@@ -12,7 +12,7 @@
 
     <artifactId>multiplatform-distribution-resources</artifactId>
     <packaging>jar</packaging>
-    <name>acme:multiplatform-distribution-resources</name>
+    <name>Multiplatform Distribution Resources</name>
 
     <properties>
         <innosetup.appName>${app.fullName}</innosetup.appName>

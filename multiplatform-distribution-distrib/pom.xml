@@ -12,7 +12,7 @@
 
     <artifactId>multiplatform-distribution-distrib</artifactId>
     <packaging>pom</packaging>
-    <name>acme:multiplatform-distribution-distrib</name>
+    <name>Multiplatform Distribution Distrib</name>
 
     <build>
         <finalName>${app.finalName}-${project.version}</finalName>
