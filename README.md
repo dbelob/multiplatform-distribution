@@ -6,7 +6,7 @@ The example demonstrates how to create multi platform distributions for applicat
 
 * [JDK 21+](https://www.oracle.com/java/technologies/downloads/)
 * [Apache Maven 3.9.0+](https://maven.apache.org/download.cgi)
-* [Inno Setup 5.5.9+](http://www.jrsoftware.org/isinfo.php)
+* [Inno Setup 6.2.2+](https://jrsoftware.org/isinfo.php)
 
 ## Compilation and package creation
 
