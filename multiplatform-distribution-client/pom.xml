@@ -196,6 +196,15 @@
                                 <configuration>
                                     <mainClass>${app.mainClass}</mainClass>
                                     <bundleJre>true</bundleJre>
+                                    <winConfig>
+                                        <!-- setup generation properties -->
+                                        <disableDirPage>false</disableDirPage>
+                                        <disableWelcomePage>false</disableWelcomePage>
+                                    </winConfig>
+                                    <linuxConfig>
+                                    </linuxConfig>
+                                    <macConfig>
+                                    </macConfig>
                                 </configuration>
                             </execution>
                         </executions>
