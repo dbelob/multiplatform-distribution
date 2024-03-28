@@ -116,22 +116,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>io.github.fvarrui</groupId>
-                <artifactId>javapackager</artifactId>
-                <version>${javapackager.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>${app.mainClass}</mainClass>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -200,56 +184,73 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>${antrun.plugin.version}</version>
+                        <groupId>io.github.fvarrui</groupId>
+                        <artifactId>javapackager</artifactId>
+                        <version>${javapackager.version}</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
-                                <configuration>
-                                    <target>
-                                        <taskdef name="jfxdeploy" classname="com.sun.javafx.tools.ant.DeployFXTask"
-                                                 classpathref="maven.plugin.classpath"/>
-                                        <copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${javafx.deploy.jarOutputDirectory}"/>
-                                        <copy todir="${javafx.deploy.jarOutputDirectory}/${javafx.deploy.dependencySubDirectory}">
-                                            <fileset dir="${project.build.directory}/lib" includes="**"/>
-                                        </copy>
-                                        <jfxdeploy outdir="${javafx.deploy.deployOutputDirectory}"
-                                                   outfile="${javafx.deploy.deployOutputFile}"
-                                                   nativeBundles="all" verbose="true">
-                                            <application name="${javafx.deploy.applicationName}"
-                                                         mainClass="${javafx.deploy.mainClass}"
-                                                         version="${project.version}"
-                                                         id="${project.artifactId}"/>
-                                            <resources>
-                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="*.jar"/>
-                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="${javafx.deploy.dependencySubDirectory}/*.jar"/>
-                                                <fileset dir="${basedir}/target" includes="license.txt"/>
-                                                <fileset dir="${basedir}/../multiplatform-distribution-distrib" includes="readme.txt"/>
-                                            </resources>
-                                            <bundleArgument arg="dropinResourcesRoot" value="${basedir}/../multiplatform-distribution-resources/target/classes"/>
-                                        </jfxdeploy>
-                                        <delete file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}/${javafx.deploy.applicationName}.ico"/>
-                                        <move file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}-${project.version}.dmg"
-                                              tofile="${javafx.deploy.deployOutputDirectory}/${app.finalName}-${project.version}.dmg"
-                                              failonerror="false"/>
-                                    </target>
-                                </configuration>
                                 <goals>
-                                    <goal>run</goal>
+                                    <goal>package</goal>
                                 </goals>
+                                <configuration>
+                                    <mainClass>${app.mainClass}</mainClass>
+                                    <bundleJre>true</bundleJre>
+                                </configuration>
                             </execution>
                         </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.oracle</groupId>
-                                <artifactId>ant-javafx</artifactId>
-                                <version>${project.build.javaVersion}</version>
-                                <systemPath>${java.home}/lib/ant-javafx.jar</systemPath>
-                                <scope>system</scope>
-                            </dependency>
-                        </dependencies>
                     </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-antrun-plugin</artifactId>-->
+<!--                        <version>${antrun.plugin.version}</version>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <phase>package</phase>-->
+<!--                                <configuration>-->
+<!--                                    <target>-->
+<!--                                        <taskdef name="jfxdeploy" classname="com.sun.javafx.tools.ant.DeployFXTask"-->
+<!--                                                 classpathref="maven.plugin.classpath"/>-->
+<!--                                        <copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${javafx.deploy.jarOutputDirectory}"/>-->
+<!--                                        <copy todir="${javafx.deploy.jarOutputDirectory}/${javafx.deploy.dependencySubDirectory}">-->
+<!--                                            <fileset dir="${project.build.directory}/lib" includes="**"/>-->
+<!--                                        </copy>-->
+<!--                                        <jfxdeploy outdir="${javafx.deploy.deployOutputDirectory}"-->
+<!--                                                   outfile="${javafx.deploy.deployOutputFile}"-->
+<!--                                                   nativeBundles="all" verbose="true">-->
+<!--                                            <application name="${javafx.deploy.applicationName}"-->
+<!--                                                         mainClass="${javafx.deploy.mainClass}"-->
+<!--                                                         version="${project.version}"-->
+<!--                                                         id="${project.artifactId}"/>-->
+<!--                                            <resources>-->
+<!--                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="*.jar"/>-->
+<!--                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="${javafx.deploy.dependencySubDirectory}/*.jar"/>-->
+<!--                                                <fileset dir="${basedir}/target" includes="license.txt"/>-->
+<!--                                                <fileset dir="${basedir}/../multiplatform-distribution-distrib" includes="readme.txt"/>-->
+<!--                                            </resources>-->
+<!--                                            <bundleArgument arg="dropinResourcesRoot" value="${basedir}/../multiplatform-distribution-resources/target/classes"/>-->
+<!--                                        </jfxdeploy>-->
+<!--                                        <delete file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}/${javafx.deploy.applicationName}.ico"/>-->
+<!--                                        <move file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}-${project.version}.dmg"-->
+<!--                                              tofile="${javafx.deploy.deployOutputDirectory}/${app.finalName}-${project.version}.dmg"-->
+<!--                                              failonerror="false"/>-->
+<!--                                    </target>-->
+<!--                                </configuration>-->
+<!--                                <goals>-->
+<!--                                    <goal>run</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                        <dependencies>-->
+<!--                            <dependency>-->
+<!--                                <groupId>com.oracle</groupId>-->
+<!--                                <artifactId>ant-javafx</artifactId>-->
+<!--                                <version>${project.build.javaVersion}</version>-->
+<!--                                <systemPath>${java.home}/lib/ant-javafx.jar</systemPath>-->
+<!--                                <scope>system</scope>-->
+<!--                            </dependency>-->
+<!--                        </dependencies>-->
+<!--                    </plugin>-->
                 </plugins>
             </build>
         </profile>
