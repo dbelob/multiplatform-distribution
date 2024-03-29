@@ -198,6 +198,15 @@
                                     <bundleJre>true</bundleJre>
                                     <winConfig>
                                         <!-- setup generation properties -->
+                                        <setupLanguages>
+                                            <english>compiler:Default.isl</english>
+                                            <french>compiler:Languages\French.isl</french>
+                                            <german>compiler:Languages\German.isl</german>
+                                            <italian>compiler:Languages\Italian.isl</italian>
+                                            <portuguese>compiler:Languages\Portuguese.isl</portuguese>
+                                            <russian>compiler:Languages\Russian.isl</russian>
+                                            <spanish>compiler:Languages\Spanish.isl</spanish>
+                                        </setupLanguages>
                                         <disableDirPage>false</disableDirPage>
                                         <disableWelcomePage>false</disableWelcomePage>
                                     </winConfig>
