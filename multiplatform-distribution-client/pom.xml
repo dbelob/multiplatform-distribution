@@ -194,8 +194,9 @@
                                     <goal>package</goal>
                                 </goals>
                                 <configuration>
-                                    <mainClass>${app.mainClass}</mainClass>
                                     <bundleJre>true</bundleJre>
+                                    <licenseFile>${basedir}/target/license.txt</licenseFile>
+                                    <mainClass>${app.mainClass}</mainClass>
                                     <winConfig>
                                         <!-- setup generation properties -->
                                         <setupLanguages>
@@ -208,6 +209,9 @@
                                             <spanish>compiler:Languages\Spanish.isl</spanish>
                                         </setupLanguages>
                                         <disableDirPage>false</disableDirPage>
+                                        <disableProgramGroupPage>false</disableProgramGroupPage>
+                                        <disableFinishedPage>false</disableFinishedPage>
+                                        <disableRunAfterInstall>false</disableRunAfterInstall>
                                         <disableWelcomePage>false</disableWelcomePage>
                                     </winConfig>
                                     <linuxConfig>
