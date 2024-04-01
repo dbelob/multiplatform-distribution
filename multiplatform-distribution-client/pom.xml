@@ -197,7 +197,14 @@
                                     <bundleJre>true</bundleJre>
                                     <licenseFile>${basedir}/target/license.txt</licenseFile>
                                     <mainClass>${app.mainClass}</mainClass>
+                                    <name>${app.fullName}</name>
+                                    <organizationName>${project.organization.name}</organizationName>
+                                    <organizationUrl>${project.organization.url}</organizationUrl>
+                                    <version>${project.version}</version>
                                     <winConfig>
+                                        <!-- general properties -->
+                                        <icoFile>${app.finalName}.ico</icoFile>
+
                                         <!-- setup generation properties -->
                                         <setupLanguages>
                                             <english>compiler:Default.isl</english>
