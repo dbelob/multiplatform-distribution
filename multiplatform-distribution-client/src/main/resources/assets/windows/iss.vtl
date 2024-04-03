@@ -7,6 +7,8 @@
 \#define MyAppLicense "$!{info.licenseFile.absolutePath}"
 \#define MyAppIcon "${info.iconFile.absolutePath}"
 \#define MyShortcutName = "${info.winConfig.shortcutName}"
+\#define MyWizardImageFile = "${info.extra["innosetup.wizardImageFile"]}"
+\#define MyWizardSmallImageFile = "${info.extra["innosetup.wizardSmallImageFile"]}"
 
 [Setup]
 AppId={{{#MyAppName}}}
@@ -17,7 +19,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={autopf}\{#MyAppFolder}
+DefaultDirName={autopf}\{#MyAppPublisher}\{#MyAppFolder}
 #if ($info.winConfig.disableDirPage)
 DisableDirPage=yes
 #else
@@ -39,13 +41,13 @@ DisableWelcomePage=yes
 #else
 DisableWelcomePage=no
 #end
-#if ($info.winConfig.setupMode.name() == "installForAllUsers") 
+#if ($info.winConfig.setupMode.name() == "installForAllUsers")
 PrivilegesRequired=admin
 PrivilegesRequiredOverridesAllowed=commandline
-#elseif ($info.winConfig.setupMode.name() == "installForCurrentUser") 
+#elseif ($info.winConfig.setupMode.name() == "installForCurrentUser")
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
-#else 
+#else
 PrivilegesRequiredOverridesAllowed=commandline dialog
 #end
 LicenseFile={#MyAppLicense}
@@ -54,6 +56,9 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64
+WizardImageFile={#MyWizardImageFile}
+WizardImageStretch=No
+WizardSmallImageFile={#MyWizardSmallImageFile}
 
 [Languages]
 #foreach ($language in $info.winConfig.setupLanguages.entrySet())
@@ -115,7 +120,7 @@ var
     libsLocation: String;
 begin
     installLocation := GetInstallLocation();
-    if installLocation <> '' then 
+    if installLocation <> '' then
     begin
         libsLocation := installLocation + '${info.libsFolder.name}';
         DelTree(libsLocation, True, True, True);
