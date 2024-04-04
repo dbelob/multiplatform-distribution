@@ -20,9 +20,9 @@ For *Linux*:
     
 ## Location of package files
 
-`multiplatform-distribution-client/target/deploy/native/multiplatform-distribution-<version>.exe` (*Windows*)
+`multiplatform-distribution-client/target/multiplatform-distribution-<version>.exe` (*Windows*)
 
-`multiplatform-distribution-client/target/deploy/native/multiplatform-distribution-<version>.dmg` (*macOS*)
+`multiplatform-distribution-client/target/multiplatform-distribution-<version>.dmg` (*macOS*)
 
 `multiplatform-distribution-client/target/multiplatform-distribution-<version>.tar.gz` (*Linux*)
 
