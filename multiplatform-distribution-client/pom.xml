@@ -197,6 +197,7 @@
                                     <assetsDir>${project.basedir}/assets</assetsDir>
                                     <bundleJre>true</bundleJre>
                                     <extra>
+                                        <innosetup.appCopyright>Copyright (c) ${app.copyrightYears} ${project.organization.name}</innosetup.appCopyright>
                                         <innosetup.uninstallDisplayName>${app.fullName}</innosetup.uninstallDisplayName>
                                         <innosetup.wizardImageFile>${project.basedir}/assets/windows/${app.finalName}-wizard-image.bmp</innosetup.wizardImageFile>
                                         <innosetup.wizardSmallImageFile>${project.basedir}/assets/windows/${app.finalName}-setup-icon.bmp</innosetup.wizardSmallImageFile>
