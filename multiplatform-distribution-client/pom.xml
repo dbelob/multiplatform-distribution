@@ -212,6 +212,9 @@
                                         <!-- general properties -->
                                         <icoFile>${project.basedir}/assets/windows/${app.finalName}.ico</icoFile>
 
+                                        <!-- exe creation properties -->
+                                        <shortcutName>${app.fullName}</shortcutName>
+
                                         <!-- setup generation properties -->
                                         <setupLanguages>
                                             <english>compiler:Default.isl</english>
