@@ -102,10 +102,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target</outputDirectory>
+                            <outputDirectory>${project.basedir}/target</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/../multiplatform-distribution-distrib</directory>
+                                    <directory>${project.basedir}/../multiplatform-distribution-distrib</directory>
                                     <filtering>true</filtering>
                                     <includes>
                                         <include>license.txt</include>
@@ -194,13 +194,13 @@
                                     <goal>package</goal>
                                 </goals>
                                 <configuration>
-                                    <assetsDir>${basedir}/src/main/resources/assets</assetsDir>
+                                    <assetsDir>${project.basedir}/assets</assetsDir>
                                     <bundleJre>true</bundleJre>
                                     <extra>
-                                        <innosetup.wizardImageFile>${basedir}/src/main/resources/assets/windows/${app.finalName}-wizard-image.bmp</innosetup.wizardImageFile>
-                                        <innosetup.wizardSmallImageFile>${basedir}/src/main/resources/assets/windows/${app.finalName}-setup-icon.bmp</innosetup.wizardSmallImageFile>
+                                        <innosetup.wizardImageFile>${project.basedir}/assets/windows/${app.finalName}-wizard-image.bmp</innosetup.wizardImageFile>
+                                        <innosetup.wizardSmallImageFile>${project.basedir}/assets/windows/${app.finalName}-setup-icon.bmp</innosetup.wizardSmallImageFile>
                                     </extra>
-                                    <licenseFile>${basedir}/target/license.txt</licenseFile>
+                                    <licenseFile>${project.basedir}/target/license.txt</licenseFile>
                                     <mainClass>${app.mainClass}</mainClass>
                                     <name>${app.fullName}</name>
                                     <organizationName>${project.organization.name}</organizationName>
@@ -208,7 +208,7 @@
                                     <version>${project.version}</version>
                                     <winConfig>
                                         <!-- general properties -->
-                                        <icoFile>${basedir}/src/main/resources/assets/windows/${app.finalName}.ico</icoFile>
+                                        <icoFile>${project.basedir}/assets/windows/${app.finalName}.ico</icoFile>
 
                                         <!-- setup generation properties -->
                                         <setupLanguages>
@@ -259,10 +259,10 @@
 <!--                                            <resources>-->
 <!--                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="*.jar"/>-->
 <!--                                                <fileset dir="${javafx.deploy.jarOutputDirectory}" includes="${javafx.deploy.dependencySubDirectory}/*.jar"/>-->
-<!--                                                <fileset dir="${basedir}/target" includes="license.txt"/>-->
-<!--                                                <fileset dir="${basedir}/../multiplatform-distribution-distrib" includes="readme.txt"/>-->
+<!--                                                <fileset dir="${project.basedir}/target" includes="license.txt"/>-->
+<!--                                                <fileset dir="${project.basedir}/../multiplatform-distribution-distrib" includes="readme.txt"/>-->
 <!--                                            </resources>-->
-<!--                                            <bundleArgument arg="dropinResourcesRoot" value="${basedir}/../multiplatform-distribution-resources/target/classes"/>-->
+<!--                                            <bundleArgument arg="dropinResourcesRoot" value="${project.basedir}/../multiplatform-distribution-resources/target/classes"/>-->
 <!--                                        </jfxdeploy>-->
 <!--                                        <delete file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}/${javafx.deploy.applicationName}.ico"/>-->
 <!--                                        <move file="${javafx.deploy.deployOutputDirectory}/${javafx.deploy.applicationName}-${project.version}.dmg"-->
