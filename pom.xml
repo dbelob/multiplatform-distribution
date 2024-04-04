@@ -24,7 +24,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.javaVersion>21</project.build.javaVersion>
 
-        <antrun.plugin.version>3.1.0</antrun.plugin.version>
         <build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
         <javapackager.version>1.7.5</javapackager.version>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
