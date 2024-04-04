@@ -25,6 +25,7 @@
         <project.build.javaVersion>21</project.build.javaVersion>
 
         <build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
+        <copy-rename-maven-plugin.version>1.0.1</copy-rename-maven-plugin.version>
         <javapackager.version>1.7.5</javapackager.version>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>

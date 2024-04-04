@@ -239,6 +239,24 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>com.coderplus.maven.plugins</groupId>
+                        <artifactId>copy-rename-maven-plugin</artifactId>
+                        <version>${copy-rename-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>rename-file</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>rename</goal>
+                                </goals>
+                                <configuration>
+                                    <sourceFile>${project.basedir}/target/${app.fullName}_${project.version}.exe</sourceFile>
+                                    <destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.exe</destinationFile>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
