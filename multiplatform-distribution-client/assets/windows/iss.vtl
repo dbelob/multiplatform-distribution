@@ -7,6 +7,8 @@
 \#define MyAppLicense "$!{info.licenseFile.absolutePath}"
 \#define MyAppIcon "${info.iconFile.absolutePath}"
 \#define MyShortcutName = "${info.winConfig.shortcutName}"
+
+\#define MyUninstallDisplayName = "${info.extra["innosetup.uninstallDisplayName"]}"
 \#define MyWizardImageFile = "${info.extra["innosetup.wizardImageFile"]}"
 \#define MyWizardSmallImageFile = "${info.extra["innosetup.wizardSmallImageFile"]}"
 
@@ -56,6 +58,8 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64
+
+UninstallDisplayName={#MyUninstallDisplayName}
 WizardImageFile={#MyWizardImageFile}
 WizardImageStretch=No
 WizardSmallImageFile={#MyWizardSmallImageFile}
