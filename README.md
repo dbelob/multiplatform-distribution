@@ -26,7 +26,7 @@ For *Linux*:
 
 `multiplatform-distribution-client/target/multiplatform-distribution-<version>.tar.gz` (*Linux*)
 
-`multiplatform-distribution-distrib/target/multiplatform-distribution-<version>-no-jre.zip` (*Linux*)
+`multiplatform-distribution-distrib/target/multiplatform-distribution-<version>-no-jre.zip`
 
 ## Article
 
