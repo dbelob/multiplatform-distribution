@@ -26,6 +26,8 @@ For *Linux*:
 
 `multiplatform-distribution-client/target/multiplatform-distribution-<version>.tar.gz` (*Linux*)
 
+`multiplatform-distribution-distrib/target/multiplatform-distribution-<version>-no-jre.zip` (*Linux*)
+
 ## Article
 
 See [Habr](https://habr.com/company/jugru/blog/340248/) (Russian)
