@@ -182,6 +182,9 @@
                                     <goal>package</goal>
                                 </goals>
                                 <configuration>
+                                    <additionalResources>
+                                        <additionalResource>${project.basedir}/../multiplatform-distribution-distrib/readme.txt</additionalResource>
+                                    </additionalResources>
                                     <assetsDir>${project.basedir}/assets</assetsDir>
                                     <bundleJre>true</bundleJre>
                                     <extra>
