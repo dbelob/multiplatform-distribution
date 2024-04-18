@@ -33,7 +33,7 @@
                             <includeScope>runtime</includeScope>
                             <fileSeparator>/</fileSeparator>
                             <outputProperty>manifest.dependency.classpath</outputProperty>
-                            <prefix>lib</prefix>
+                            <prefix>${app.dependencyDirectory}</prefix>
                             <pathSeparator>;</pathSeparator>
                         </configuration>
                     </execution>
@@ -165,7 +165,7 @@
                 <javafx.deploy.jarOutputDirectory>${javafx.deploy.outputDirectory}/app</javafx.deploy.jarOutputDirectory>
                 <javafx.deploy.deployOutputDirectory>${javafx.deploy.outputDirectory}/native</javafx.deploy.deployOutputDirectory>
                 <javafx.deploy.deployOutputFile>${app.finalName}</javafx.deploy.deployOutputFile>
-                <javafx.deploy.dependencySubDirectory>lib</javafx.deploy.dependencySubDirectory>
+                <javafx.deploy.dependencySubDirectory>${app.dependencyDirectory}</javafx.deploy.dependencySubDirectory>
                 <javafx.deploy.mainClass>${app.mainClass}</javafx.deploy.mainClass>
             </properties>
 

@@ -20,6 +20,7 @@
         <app.defaultPackage>acme.distribution</app.defaultPackage>
         <app.mainClass>${app.defaultPackage}.App</app.mainClass>
         <app.identifier>${app.defaultPackage}</app.identifier>
+        <app.dependencyDirectory>libs</app.dependencyDirectory>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.javaVersion>21</project.build.javaVersion>

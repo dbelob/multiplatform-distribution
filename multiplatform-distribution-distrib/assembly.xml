@@ -17,7 +17,7 @@
         </dependencySet>
         <dependencySet>
             <unpack>false</unpack>
-            <outputDirectory>lib</outputDirectory>
+            <outputDirectory>${app.dependencyDirectory}</outputDirectory>
             <useProjectArtifact>false</useProjectArtifact>
             <excludes>
                 <exclude>acme:multiplatform-distribution-client</exclude>
