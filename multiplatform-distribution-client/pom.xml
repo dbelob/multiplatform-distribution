@@ -233,6 +233,7 @@
                                         <disableWelcomePage>false</disableWelcomePage>
                                     </winConfig>
                                     <linuxConfig>
+                                        <pngFile>${project.basedir}/assets/linux/${app.finalName}.png</pngFile>
                                     </linuxConfig>
                                     <macConfig>
                                     </macConfig>
