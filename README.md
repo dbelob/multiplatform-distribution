@@ -10,23 +10,33 @@ The example demonstrates how to create multi platform distributions for applicat
 
 ## Compilation and package creation
 
-For *Windows* and *macOS*:
+With native packages:
 
     mvn clean package -P native-deploy
     
-For *Linux*:
+Without native packages (only *ZIP* file):
 
-    mvn clean package -P native-deploy,tar-gz
+    mvn clean package
     
 ## Location of package files
 
-`multiplatform-distribution-client/target/multiplatform-distribution-<version>.exe` (*Windows*)
+For all platforms:
 
-`multiplatform-distribution-client/target/multiplatform-distribution-<version>.dmg` (*macOS*)
+    multiplatform-distribution-distrib/target/multiplatform-distribution-<version>-no-jre.zip
 
-`multiplatform-distribution-client/target/multiplatform-distribution-<version>.tar.gz` (*Linux*)
+For *Windows*:
 
-`multiplatform-distribution-distrib/target/multiplatform-distribution-<version>-no-jre.zip`
+    multiplatform-distribution-client/target/multiplatform-distribution-<version>.exe
+
+For *macOS*:
+
+    multiplatform-distribution-client/target/multiplatform-distribution-<version>.dmg
+
+For *Linux*:
+
+    multiplatform-distribution-client/target/multiplatform-distribution-<version>.tar.gz
+    multiplatform-distribution-client/target/multiplatform-distribution_<version>.deb
+    multiplatform-distribution-client/target/multiplatform-distribution_<version>.rpm
 
 ## Article
 
