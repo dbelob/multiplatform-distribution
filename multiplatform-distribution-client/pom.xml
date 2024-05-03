@@ -124,39 +124,48 @@
     </dependencies>
 
     <profiles>
-<!--        <profile>-->
-<!--            <id>windows</id>-->
-<!--            <activation>-->
-<!--                <os>-->
-<!--                    <family>windows</family>-->
-<!--                </os>-->
-<!--            </activation>-->
-<!--            <properties>-->
-<!--                <javapackager.name>${app.fullName}</javapackager.name>-->
-<!--            </properties>-->
-<!--        </profile>-->
-<!--        <profile>-->
-<!--            <id>unix</id>-->
-<!--            <activation>-->
-<!--                <os>-->
-<!--                    <family>unix</family>-->
-<!--                </os>-->
-<!--            </activation>-->
-<!--            <properties>-->
-<!--                <javapackager.name>${app.finalName}</javapackager.name>-->
-<!--            </properties>-->
-<!--        </profile>-->
-<!--        <profile>-->
-<!--            <id>macos</id>-->
-<!--            <activation>-->
-<!--                <os>-->
-<!--                    <family>mac</family>-->
-<!--                </os>-->
-<!--            </activation>-->
-<!--            <properties>-->
-<!--                <javapackager.name>${app.shortName}</javapackager.name>-->
-<!--            </properties>-->
-<!--        </profile>-->
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <javapackager.name>${app.fullName}</javapackager.name>
+                <javapackager.createTarball>false</javapackager.createTarball>
+                <renameSourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.exe</renameSourceFile>
+                <renameDestinationFile>${project.basedir}/target/${app.finalName}-${project.version}.exe</renameDestinationFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <javapackager.name>${app.finalName}</javapackager.name>
+                <javapackager.createTarball>true</javapackager.createTarball>
+                <renameSourceFile>${project.basedir}/target/${javapackager.name}-${project.version}-linux.tar.gz</renameSourceFile>
+                <renameDestinationFile>${project.basedir}/target/${app.finalName}-${project.version}.tar.gz</renameDestinationFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>macos</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <javapackager.name>${app.shortName}</javapackager.name>
+                <javapackager.createTarball>false</javapackager.createTarball>
+                <renameSourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.dmg</renameSourceFile>
+                <renameDestinationFile>${project.basedir}/target/${app.finalName}-${project.version}.dmg</renameDestinationFile>
+            </properties>
+        </profile>
 
         <profile>
             <id>native-deploy</id>
@@ -187,6 +196,7 @@
                                     </additionalResources>
                                     <assetsDir>${project.basedir}/assets</assetsDir>
                                     <bundleJre>true</bundleJre>
+                                    <createTarball>${javapackager.createTarball}</createTarball>
                                     <extra>
                                         <innosetup.appCopyright>Copyright (c) ${app.copyrightYears} ${project.organization.name}</innosetup.appCopyright>
                                         <innosetup.uninstallDisplayName>${app.fullName}</innosetup.uninstallDisplayName>
@@ -230,22 +240,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <javapackager.name>${app.fullName}</javapackager.name>
-            </properties>
-            <build>
-                <plugins>
                     <plugin>
                         <groupId>com.coderplus.maven.plugins</groupId>
                         <artifactId>copy-rename-maven-plugin</artifactId>
@@ -258,82 +252,8 @@
                                     <goal>rename</goal>
                                 </goals>
                                 <configuration>
-                                    <sourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.exe</sourceFile>
-                                    <destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.exe</destinationFile>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>unix</id>
-            <activation>
-                <os>
-                    <family>unix</family>
-                </os>
-            </activation>
-            <properties>
-                <javapackager.name>${app.finalName}</javapackager.name>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.coderplus.maven.plugins</groupId>
-                        <artifactId>copy-rename-maven-plugin</artifactId>
-                        <version>${copy-rename-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>rename-file</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>rename</goal>
-                                </goals>
-                                <configuration>
-                                    <fileSets>
-                                        <fileSet>
-                                            <sourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.deb</sourceFile>
-                                            <destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.deb</destinationFile>
-                                        </fileSet>
-                                        <fileSet>
-                                            <sourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.rpm</sourceFile>
-                                            <destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.rpm</destinationFile>
-                                        </fileSet>
-                                    </fileSets>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>macos</id>
-            <activation>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-            <properties>
-                <javapackager.name>${app.shortName}</javapackager.name>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.coderplus.maven.plugins</groupId>
-                        <artifactId>copy-rename-maven-plugin</artifactId>
-                        <version>${copy-rename-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>rename-file</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>rename</goal>
-                                </goals>
-                                <configuration>
-                                    <sourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.dmg</sourceFile>
-                                    <destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.dmg</destinationFile>
+                                    <sourceFile>${renameSourceFile}</sourceFile>
+                                    <destinationFile>${renameDestinationFile}</destinationFile>
                                 </configuration>
                             </execution>
                         </executions>
