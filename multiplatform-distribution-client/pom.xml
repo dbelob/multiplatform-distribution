@@ -134,8 +134,9 @@
             <properties>
                 <javapackager.name>${app.fullName}</javapackager.name>
                 <javapackager.createTarball>false</javapackager.createTarball>
-                <renameSourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.exe</renameSourceFile>
-                <renameDestinationFile>${project.basedir}/target/${app.finalName}-${project.version}.exe</renameDestinationFile>
+                <copy-rename.goal>rename</copy-rename.goal>
+                <copy-rename.sourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.exe</copy-rename.sourceFile>
+                <copy-rename.destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.exe</copy-rename.destinationFile>
             </properties>
         </profile>
         <profile>
@@ -148,8 +149,9 @@
             <properties>
                 <javapackager.name>${app.finalName}</javapackager.name>
                 <javapackager.createTarball>true</javapackager.createTarball>
-                <renameSourceFile>${project.basedir}/target/${javapackager.name}-${project.version}-linux.tar.gz</renameSourceFile>
-                <renameDestinationFile>${project.basedir}/target/${app.finalName}-${project.version}.tar.gz</renameDestinationFile>
+                <copy-rename.goal>copy</copy-rename.goal>
+                <copy-rename.sourceFile>${project.basedir}/target/${javapackager.name}-${project.version}-linux.tar.gz</copy-rename.sourceFile>
+                <copy-rename.destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.tar.gz</copy-rename.destinationFile>
             </properties>
         </profile>
         <profile>
@@ -162,8 +164,9 @@
             <properties>
                 <javapackager.name>${app.shortName}</javapackager.name>
                 <javapackager.createTarball>false</javapackager.createTarball>
-                <renameSourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.dmg</renameSourceFile>
-                <renameDestinationFile>${project.basedir}/target/${app.finalName}-${project.version}.dmg</renameDestinationFile>
+                <copy-rename.goal>rename</copy-rename.goal>
+                <copy-rename.sourceFile>${project.basedir}/target/${javapackager.name}_${project.version}.dmg</copy-rename.sourceFile>
+                <copy-rename.destinationFile>${project.basedir}/target/${app.finalName}-${project.version}.dmg</copy-rename.destinationFile>
             </properties>
         </profile>
 
@@ -241,11 +244,11 @@
                                 <id>rename-file</id>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>rename</goal>
+                                    <goal>${copy-rename.goal}</goal>
                                 </goals>
                                 <configuration>
-                                    <sourceFile>${renameSourceFile}</sourceFile>
-                                    <destinationFile>${renameDestinationFile}</destinationFile>
+                                    <sourceFile>${copy-rename.sourceFile}</sourceFile>
+                                    <destinationFile>${copy-rename.destinationFile}</destinationFile>
                                 </configuration>
                             </execution>
                         </executions>
