@@ -191,6 +191,7 @@
                                     <assetsDir>${project.basedir}/assets</assetsDir>
                                     <bundleJre>true</bundleJre>
                                     <createTarball>${javapackager.createTarball}</createTarball>
+                                    <displayName>${app.fullName}</displayName>
                                     <extra>
                                         <innosetup.appCopyright>Copyright (c) ${app.copyrightYears} ${project.organization.name}</innosetup.appCopyright>
                                         <innosetup.uninstallDisplayName>${app.fullName}</innosetup.uninstallDisplayName>
