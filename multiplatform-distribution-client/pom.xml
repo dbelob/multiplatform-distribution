@@ -231,6 +231,11 @@
                                         <pngFile>${project.basedir}/assets/linux/${app.finalName}.png</pngFile>
                                     </linuxConfig>
                                     <macConfig>
+                                        <!-- general properties -->
+                                        <icnsFile>${project.basedir}/assets/mac/${app.shortName}.icns</icnsFile>
+
+                                        <!-- properties used for DMG disk image generation -->
+                                        <volumeIcon>${project.basedir}/assets/mac/${app.shortName}-volume.icns</volumeIcon>
                                     </macConfig>
                                 </configuration>
                             </execution>
