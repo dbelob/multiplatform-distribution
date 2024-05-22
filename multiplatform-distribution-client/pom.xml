@@ -232,10 +232,10 @@
                                     </linuxConfig>
                                     <macConfig>
                                         <!-- general properties -->
-                                        <icnsFile>${project.basedir}/assets/mac/${app.shortName}.icns</icnsFile>
+                                        <icnsFile>${project.basedir}/assets/mac/${app.finalName}.icns</icnsFile>
 
                                         <!-- properties used for DMG disk image generation -->
-                                        <volumeIcon>${project.basedir}/assets/mac/${app.shortName}-volume.icns</volumeIcon>
+                                        <volumeIcon>${project.basedir}/assets/mac/${app.finalName}-volume.icns</volumeIcon>
                                     </macConfig>
                                 </configuration>
                             </execution>
