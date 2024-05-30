@@ -38,7 +38,7 @@ For *Linux*:
     multiplatform-distribution-client/target/multiplatform-distribution_<version>.deb
     multiplatform-distribution-client/target/multiplatform-distribution_<version>.rpm
 
-## Article
+## Articles
 
-* [Creating distributions for different operating systems in Java 21 and 22](https://habr.com/ru/companies/jugru/articles/340248/) (Russian)
-* [Creating distributions for different operating systems in Java 9 and 10](https://habr.com/ru/companies/jugru/articles/816981/) (Russian)
+* [Creating distributions for different operating systems in Java 21 and 22](https://habr.com/ru/companies/jugru/articles/816981/) (Russian)
+* [Creating distributions for different operating systems in Java 9 and 10](https://habr.com/ru/companies/jugru/articles/340248/) (Russian)
