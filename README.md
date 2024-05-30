@@ -40,4 +40,5 @@ For *Linux*:
 
 ## Article
 
-See [Habr](https://habr.com/company/jugru/blog/340248/) (Russian)
+* [Creating distributions for different operating systems in Java 21 and 22](https://habr.com/ru/companies/jugru/articles/340248/) (Russian)
+* [Creating distributions for different operating systems in Java 9 and 10](https://habr.com/ru/companies/jugru/articles/816981/) (Russian)
