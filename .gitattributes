@@ -19,6 +19,7 @@
 *.svg           text
 *.tld           text
 *.txt           text
+*.vtl           text linguist-vendored
 *.xml           text
 
 # Declare files that will always have CRLF line endings on checkout.
