@@ -1,12 +1,12 @@
 # Multi platform distribution for Java application
 
-The example demonstrates how to create multi platform distributions for applications in *Java 21*.
+The example demonstrates how to create multi platform distributions for applications in *Java 25*.
 
 ## Requirements
 
-* [JDK 21+](https://www.oracle.com/java/technologies/downloads/)
+* [JDK 25+](https://www.oracle.com/java/technologies/downloads/)
 * [Apache Maven 3.9.0+](https://maven.apache.org/download.cgi)
-* [Inno Setup 6.2.2+](https://jrsoftware.org/isinfo.php)
+* [Inno Setup 6.5.4+](https://jrsoftware.org/isinfo.php)
 
 ## Compilation and package creation
 
